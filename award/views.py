@@ -7,3 +7,7 @@ import datetime as dt
 
 def welcome(request):
     return render(request, 'welcome.html')
+
+def index(request):
+    date = dt.date.today()
+    return render(request, 'all-posts/index.html', {"date": date,})
