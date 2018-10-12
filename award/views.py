@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import datetime as dt
 from .models import Project,Profile
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 from django.contrib.auth import login, authenticate
 from .forms import SignupForm
@@ -55,7 +57,7 @@ def activate(request, uidb64, token):
 
 def welcome(request):
     return render(request, 'welcome.html')
-
+@login_required(login_url='/accounts/login/')
 def index(request):
     date = dt.date.today()
     return render(request, 'all-posts/index.html', {"date": date,})
