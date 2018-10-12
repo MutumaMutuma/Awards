@@ -8,14 +8,44 @@
               </a>
     
         </div>
+        {% if user.is_authenticated %}
+        
+                {% if photos_item.profile.profile_pic %}
+                <section> <img style="border-radius: 50% ; padding: 0.15rem;   background: linear-gradient(to right bottom, #2cd8a4, #2ec97b);" class=" img-circle"
+                src="{{ photos_item.profile.profile_pic.url}}" alt="" width="50px" height="50px""> <a href="/profiles/{{ photos_item.profile.user.id}}" style="color:black">{{ photos_item.profile.user.username}}</a> <img src="https://cdn.shopify.com/s/files/1/2080/4695/products/1495368559287_1024x1024.png?v=1532767427" alt="" height="20px"> </section> <br>
+                {% else %}
+                <img style="border-radius: 50% ; padding: 0.15rem;  background: linear-gradient(to right bottom, #2cd88888, #2ec96970);" class=" img-circle"
+                src="https://www.bristolbrewing.com/wp-content/uploads/2017/08/default-avatar.png" alt="" width="50px" height="50px""> <a href="/profiles/{{ photos_item.profile.user.id}}" style="color:black">{{ photos_item.profile.user.username}}</a></section> <br> 
+                <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton btn-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <h2><a href="#" style="color: white;">{{ user.username}}</a></h2> 
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
+                        <a class="dropdown-item" href="/logout">Log Out</a>
+                        </div>
+                </div>
+                <a href="#"><button id="btn-2">Submit Project</button></a> 
+                {% endif %}
+                
+                
+                
+              {% else %}
+             
+              <button class="btn-2"> <a href="/accounts/login" style="color: white;">Log In</a> </button>
+              
+  
+              {% endif %}
         <div class="red" id="ohmy">
-                <button class="btn-2"> <a href="/accounts/login" style="color: white;">Log In</a> </button>
+               
         </div>
       
       <div id="mySidenav" class="sidenav">
           <h3 style="color: white;"> <img float="right" src="https://mbtskoudsalg.com/images/award-transparent-real-5.png" alt="" height="150px"> Awards</h3>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
-            <a href="#">Register</a>
+            <a href="/">Home</a>
+            <a href="{% url 'signup'%}">Register</a>
             <a href="#">Login</a>
             <a href="#">Submit your site</a>
             <a href="#">Contact</a>
