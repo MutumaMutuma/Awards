@@ -57,7 +57,7 @@ def activate(request, uidb64, token):
 
 def welcome(request):
     return render(request, 'welcome.html')
-@login_required(login_url='/accounts/login/')
+
 def index(request):
     date = dt.date.today()
     return render(request, 'all-posts/index.html', {"date": date,})
