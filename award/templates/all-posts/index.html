@@ -2,7 +2,20 @@
 
 {% block content %}
 {{block.super}}
-<h6>{{date|date:"l d-F Y"}}</h6>
-<h6>Hello World welcome to Awards</h6>
-<button class="btn btn-outline-danger btn-sm">yes</button>
+
+<div id="main" class="container-fluid blue " >
+<h1 style="text-align:center; color:rgb(253, 253, 253);" > <img float="right" src="https://mbtskoudsalg.com/images/award-transparent-real-5.png" alt="" height="150px"> AWARDS </h1>
+<h6 style="text-align:center; color:rgb(253, 253, 253);">{{date|date:"l d-F Y"}}</h6>
+   
+<div class="mail">
+        <form action="">
+            <input type="text" name="search" class="formStyle" placeholder="Search" required />
+
+             <a href="#" class="formButton">Search</a>
+
+
+      </form>
+    </div>
+</div>
+
 {% endblock %}
