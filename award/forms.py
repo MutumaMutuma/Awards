@@ -3,10 +3,12 @@ from .models import Project,Profile, Comments
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-# class ProjectForm(forms.ModelForm):
-#     class Meta:
-#         model = Project
-#         exclude = ['likes','profile','posted_time','profile','user']
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['profile','posted_time','user']
+        
+
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
