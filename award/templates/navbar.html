@@ -1,24 +1,37 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="#">Hidden brand</a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline navbar-form" role="search" >
-            <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text" class="form-control" name="username">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="search"><i class="fa fa-search"></i></button>
-            
-          </form>
+          <a class="navbar-brand" href="#">
+                <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776; Menu</span> 
+              </a>
+             <div class="red" id="ohmy">
+                <a href="#">Login</a>
+             </div>
+                  
+          
         </div>
       </nav>
+      <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+          
+          
+      <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+            }
+            
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+                document.body.style.backgroundColor = "white";
+            }
+        </script>
