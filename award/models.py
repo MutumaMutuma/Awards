@@ -45,7 +45,8 @@ class Project(models.Model):
     project_name = models.CharField(max_length=30)
     image = models.ImageField(upload_to='images/')
     project_description = models.CharField(max_length=30)
-    
+    project_url = models.CharField(max_length=70)
+
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True, null=True)
     posted_time = models.DateTimeField(auto_now_add=True,)
@@ -75,6 +76,6 @@ class Comments(models.Model):
         self.delete()
 
     @classmethod
-    def get_comments_by_images(cls, id):
+    def get_comments_by_projects(cls, id):
         comments = Comments.objects.filter(project__pk = id)
         return comments
