@@ -16,12 +16,13 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comments
-#         exclude = ['project','user']
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        exclude = ['project','user']
+        fields = ['comment']
 
-# class EditForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ['bio','profile_pic']
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio','profile_pic']
