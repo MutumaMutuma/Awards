@@ -13,9 +13,9 @@
             {% for user in users %}
             <div class="users">
                 {% if user.profile.profile_pic %}
-                <img src="{{user.profile.profile_pic.url}}" alt="profile-photo" class="rounded-circle user" width="80px" height="80px"><span class="list-inline username">{{user.username}}</span>
+               <a href="/profiles/{{ user.id}}"><img src="{{user.profile.profile_pic.url}}" alt="profile-photo" class="rounded-circle user" width="80px" height="80px"><span style="color: white; font-size: 25px;" class="list-inline username">{{user.username}}</span></a> 
                 {% else %}
-                <img src="https://www.bristolbrewing.com/wp-content/uploads/2017/08/default-avatar.png" alt="avatar" class="img-thumbnail rounded-circle user" width="80px" height="80px"><span class="list-inline username">{{user.username}}</span>
+                <a href="/profiles/{{ user.id}}"> <img src="https://www.bristolbrewing.com/wp-content/uploads/2017/08/default-avatar.png" alt="avatar" class="img-thumbnail rounded-circle user" width="80px" height="80px"><span style="color: white; font-size: 25px;" class="list-inline username">{{user.username}}</span></a> 
                 {% endif %}         
             </div>
             {% endfor %}
