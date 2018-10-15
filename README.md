@@ -1,4 +1,4 @@
-# <img src="https://www.shareicon.net/download/2016/11/16/854126_color.ico" height="40px"> Awards
+# <img src="/static/pics/awards-academic-5.png" height="40px"> Awards
 This is an app where users can review apps made by other devs
 
 ## Application
