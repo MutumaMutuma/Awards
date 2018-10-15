@@ -44,9 +44,11 @@ class Project(models.Model):
     
     project_name = models.CharField(max_length=30)
     image = models.ImageField(upload_to='images/')
+    demo = models.FileField(upload_to='documents/' , null=True)
     project_description = models.CharField(max_length=30)
+    
     project_url = models.CharField(max_length=70)
-    tech_used = models.CharField(max_length=70)
+    technologies_used = models.CharField(max_length=70)
 
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True, null=True)
