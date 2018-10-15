@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 import datetime as dt
-from .models import Project,Profile
+from .models import Project,Profile,Reviews,Votes
 from django.contrib.auth.decorators import login_required
-from .forms import ProjectForm, SignupForm,EditForm,CommentForm
+from .forms import *
 from django.db import models
 from django.http import Http404
-from .models import Project,Profile
+
 # Create your views here.
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -70,10 +70,10 @@ def index(request):
     date = dt.date.today()
     photos = Project.objects.all()
     # print(photos)
-    comm = CommentForm()
+    comm = ReviewForm()
     profiles = Profile.objects.all()
     # print(profiles)
-    form = CommentForm()
+    form = ReviewForm()
     return render(request, 'all-posts/index.html', {"date": date,"comm":comm, "photos":photos, "profiles":profiles, "form":form})
 
 def new_project(request):
@@ -123,7 +123,8 @@ def search_results(request):
         searched_users = User.objects.filter(username=search_term)
         message = f"{search_term}"
         profiles=  Profile.objects.all( )
-        
+        # profile = Profile.objects.get(user_id=id)
+        # post=Project.objects.filter(user_id=id)
         return render(request, 'all-posts/search.html',{"message":message,"users": searched_users,'profiles':profiles})
 
     else:
@@ -135,7 +136,7 @@ def comment(request,image_id):
     #Getting comment form data
     image =  Project.objects.get(id=image_id)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = ReviewForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
@@ -188,3 +189,27 @@ class ProfileDesc(APIView):
             serialized.save()
             return Response(serialized.data)
         return Response(serialized.errors,status=status.HTTP_400_BAD_REQUEST)
+
+def profiles(request,id):
+    profile = Profile.objects.get(user_id=id)
+    post=Project.objects.filter(user_id=id)
+                       
+    return render(request,'profile/profiles_each.html',{"profile":profile,"post":post})
+
+def projects(request,id):
+    post=Project.objects.get(id=id)
+    comm = Reviews()
+    vote = Votess()
+    if request.method == 'POST':
+            vote = Votess(request.POST)
+            if vote.is_valid():
+                    design = vote.cleaned_data['design']
+                    usability = vote.cleaned_data['usability']
+                    content = vote.cleaned_data['content']
+                    creativity = vote.cleaned_data['creativity']
+                    rating = Votes(design=design,usability=usability,
+                                    content=content,creativity=creativity,
+                                    user=request.user,post=post)
+                    rating.save()
+                    return redirect('/')
+    return render(request,'all-posts/projects_each.html',{"vote":vote,"comm":comm,"post":post})
