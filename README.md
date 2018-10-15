@@ -22,8 +22,8 @@ The user should be able to:
 To install, follow the following instructions;
 
 ```bash
-    $ git clone https://github.com/MutumaMutuma/Insta-Clone.git
-    $ cd Insta-Clone
+    $ git clone https://github.com/MutumaMutuma/Awards.git
+    $ cd Awards
     $ source virtual/bin/activate
     Install all the necessary requirements by running pip install -r requirements.txt (Python 3.6).
     $ ./manager.py runserver
@@ -41,9 +41,9 @@ Since one needs a virtual enviroment, Create a virtual file and add the followin
     MODE= # dev or prod , set to prod during production
     ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
 ```
-## Insta-Clone Demo
+## Awards Demo
 
-This is the live link to Insta-clone [Click here](https://hawardsyamimi.herokuapp.com)
+This is the live link to Awards [Click here](https://hawardsyamimi.herokuapp.com)
 
 ## Technology used
 
