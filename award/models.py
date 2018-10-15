@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MinValueValidator,MaxValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -44,7 +45,7 @@ class Project(models.Model):
     
     project_name = models.CharField(max_length=30)
     image = models.ImageField(upload_to='images/')
-    demo = models.FileField(upload_to='documents/' , null=True)
+    recorded_demo = models.FileField(upload_to='documents/' , null=True)
     project_description = models.CharField(max_length=30)
     
     project_url = models.CharField(max_length=70)
@@ -66,7 +67,7 @@ class Project(models.Model):
         projects = cls.objects.all()
         return projects
 
-class Comments(models.Model):
+class Reviews(models.Model):
     comment = models.CharField(max_length = 300)
     posted_on = models.DateTimeField(auto_now=True)
     image = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='comments')
@@ -82,3 +83,11 @@ class Comments(models.Model):
     def get_comments_by_projects(cls, id):
         comments = Comments.objects.filter(project__pk = id)
         return comments
+
+class Votes(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post =  models.ForeignKey(Project,on_delete=models.CASCADE,related_name='likes')
+    design = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    usability = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    creativity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
+    content = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(10)])
