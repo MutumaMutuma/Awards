@@ -220,16 +220,16 @@ def projects(request,id):
     con = []
     # 
     if len(usability)>0:
-            usa = (sum(usability)/len(usability))
+            usa = (sum(usability)//len(usability))
             us.append(usa)
     if len(creativity)>0:
-            crea = (sum(creativity)/len(creativity))
+            crea = (sum(creativity)//len(creativity))
             cre.append(crea)
     if len(design)>0:
-            des = (sum(design)/len(design))
+            des = (sum(design)//len(design))
             de.append(des)
     if len(content)>0:
-            cont = (sum(content)/len(content))
+            cont = (sum(content)//len(content))
             con.append(cont)
     # 
     if request.method == 'POST':
