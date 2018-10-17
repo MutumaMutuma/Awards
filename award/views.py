@@ -244,4 +244,4 @@ def projects(request,id):
                                     user=request.user,post=post)
                     rating.save()
                     return redirect('/')
-    return render(request,'all-posts/projects_each.html',{"form":form, "de":de, "creativity":creativity, "content":content, "design":design, "usability":usability, "post":post,"date":date})
+    return render(request,'all-posts/projects_each.html',{"form":form, "de":de, "cre":cre, "con":con, "design":design, "us":us, "post":post,"date":date})
